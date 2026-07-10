@@ -37,15 +37,16 @@ Arsitektur folder di dalam direktori `src/` disusun secara rapi dan modular untu
 
 ```text
 src/
-├── assets/          # File gambar, logo, dan grafis statis
 ├── components/      # Komponen UI global yang modular dan reusable
 │   ├── Sidebar.jsx  # Menu navigasi samping (Desktop & Mobile drawer)
-│   ├── StatsCard.jsx# Kartu metrik kalkulasi data dinamis
+│   ├── Header.jsx   # Header dengan search bar dan profil admin
 │   └── Toast.jsx    # Pop-up notifikasi feedback aksi
 ├── constants/       # Data awal / placeholder (mockProducts, mockOrders)
 │   └── index.js
 ├── pages/           # Komponen halaman utama dashboard
-│   ├── Produk.jsx   # Kelola tabel produk dan form modal CRUD
+│   ├── Overview.jsx # Halaman dashboard dengan kartu statistik
+│   ├── Produk.jsx   # Kelola tabel produk dan tombol CRUD
+│   ├── FormProduk.jsx# Form tambah/edit produk
 │   └── Pesanan.jsx  # Kelola tabel transaksi dan update status
 ├── App.jsx          # Root Component tempat routing halaman, state utama, & logika LocalStorage
 ├── index.css        # Konfigurasi directive Tailwind CSS v4
