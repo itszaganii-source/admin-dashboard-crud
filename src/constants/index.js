@@ -68,3 +68,42 @@ export const mockProducts = [
     image: 'https://via.placeholder.com/150',
   },
 ];
+
+// Mock order data
+export const mockOrders = [
+  {
+    id: 'ORD-001',
+    namaPelanggan: 'Budi Santoso',
+    tanggal: '2026-07-08',
+    totalHarga: 15000000,
+    status: 'Diproses',
+  },
+  {
+    id: 'ORD-002',
+    namaPelanggan: 'Siti Rahayu',
+    tanggal: '2026-07-09',
+    totalHarga: 4300000,
+    status: 'Dikirim',
+  },
+  {
+    id: 'ORD-003',
+    namaPelanggan: 'Ahmad Wijaya',
+    tanggal: '2026-07-09',
+    totalHarga: 6250000,
+    status: 'Selesai',
+  },
+  {
+    id: 'ORD-004',
+    namaPelanggan: 'Dewi Lestari',
+    tanggal: '2026-07-10',
+    totalHarga: 750000,
+    status: 'Diproses',
+  },
+  {
+    id: 'ORD-005',
+    namaPelanggan: 'Rudi Hartono',
+    tanggal: '2026-07-10',
+    totalHarga: 12000000,
+    status: 'Dikirim',
+  },
+];
