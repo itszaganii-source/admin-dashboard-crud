@@ -151,10 +151,7 @@ function App() {
         )
       case 'pesanan':
         return (
-          <Pesanan 
-            orders={orders}
-            onUpdateStatus={updateOrderStatus}
-          />
+          <Pesanan />
         )
       default:
         return <Overview products={products} />
