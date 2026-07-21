@@ -2,14 +2,17 @@ import React from 'react'
 import { Package, AlertTriangle, DollarSign, TrendingUp } from 'lucide-react'
 
 const Overview = ({ products }) => {
+  // Ensure products is always an array
+  const safeProducts = Array.isArray(products) ? products : []
+
   // Calculate statistics
-  const totalProducts = products.length
-  const totalStock = products.reduce((sum, product) => sum + product.stock, 0)
-  const lowStockProducts = products.filter((product) => product.stock < 10).length
-  const totalRevenue = products.reduce((sum, product) => sum + (product.price * product.stock), 0)
+  const totalProducts = safeProducts.length
+  const totalStock = safeProducts.reduce((sum, product) => sum + (product.stock || 0), 0)
+  const lowStockProducts = safeProducts.filter((product) => product.stock < 10).length
+  const totalRevenue = safeProducts.reduce((sum, product) => sum + ((product.price || 0) * (product.stock || 0)), 0)
 
   // Get recent products (last 5)
-  const recentProducts = products.slice(-5).reverse()
+  const recentProducts = safeProducts.slice(-5).reverse()
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('id-ID', {
@@ -106,8 +109,8 @@ const Overview = ({ products }) => {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
-              {recentProducts.map((product) => (
-                <tr key={product.id} className="hover:bg-slate-50 transition-colors duration-200">
+              {recentProducts.map((product, index) => (
+                <tr key={product.id || product.ID || index} className="hover:bg-slate-50 transition-colors duration-200">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div className="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center mr-3">

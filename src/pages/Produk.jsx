@@ -61,8 +61,8 @@ const Produk = ({ products, onEdit, onDelete, onAdd }) => {
                   </td>
                 </tr>
               ) : (
-                products.map((product) => (
-                  <tr key={product.id} className="hover:bg-slate-50 transition-colors duration-200">
+                products.map((product, index) => (
+                  <tr key={product.id || product.ID || index} className="hover:bg-slate-50 transition-colors duration-200">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="w-10 h-10 bg-slate-200 rounded-lg flex items-center justify-center mr-3">

@@ -5,8 +5,10 @@ const FormProduk = ({ editingProduct, onSave, onCancel }) => {
   const [formData, setFormData] = useState({
     name: '',
     category: 'Elektronik',
+    description: '',
     price: '',
     stock: '',
+    image: '',
   })
 
   const categories = ['Elektronik', 'Aksesoris', 'Pakaian', 'Makanan', 'Lainnya']
@@ -17,8 +19,10 @@ const FormProduk = ({ editingProduct, onSave, onCancel }) => {
       setFormData({
         name: editingProduct.name,
         category: editingProduct.category,
+        description: editingProduct.description || '',
         price: editingProduct.price,
         stock: editingProduct.stock,
+        image: editingProduct.image || '',
       })
     }
   }, [editingProduct])
@@ -45,8 +49,10 @@ const FormProduk = ({ editingProduct, onSave, onCancel }) => {
     setFormData({
       name: '',
       category: 'Elektronik',
+      description: '',
       price: '',
       stock: '',
+      image: '',
     })
     onCancel()
   }
@@ -111,6 +117,22 @@ const FormProduk = ({ editingProduct, onSave, onCancel }) => {
             </select>
           </div>
 
+          {/* Deskripsi */}
+          <div>
+            <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-2">
+              Deskripsi
+            </label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Masukkan deskripsi produk"
+              rows="3"
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300"
+            />
+          </div>
+
           {/* Harga */}
           <div>
             <label htmlFor="price" className="block text-sm font-medium text-slate-700 mb-2">
@@ -144,6 +166,22 @@ const FormProduk = ({ editingProduct, onSave, onCancel }) => {
               min="0"
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300"
               required
+            />
+          </div>
+
+          {/* Gambar URL */}
+          <div>
+            <label htmlFor="image" className="block text-sm font-medium text-slate-700 mb-2">
+              URL Gambar
+            </label>
+            <input
+              type="url"
+              id="image"
+              name="image"
+              value={formData.image}
+              onChange={handleChange}
+              placeholder="Masukkan URL gambar produk"
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300"
             />
           </div>
 
