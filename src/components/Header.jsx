@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
-import { Search, Bell, User, Menu } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Search, Bell, User, Menu, LogOut } from 'lucide-react'
 
 const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [searchQuery, setSearchQuery] = useState('')
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    navigate('/login')
+  }
 
   return (
     <header className="sticky top-0 bg-white border-b border-slate-200 shadow-sm z-40">
@@ -46,6 +54,13 @@ const Header = ({ isSidebarOpen, setIsSidebarOpen }) => {
               <p className="text-sm font-semibold text-slate-800">Admin User</p>
               <p className="text-xs text-slate-500">Administrator</p>
             </div>
+            <button
+              onClick={handleLogout}
+              className="p-2 text-slate-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-300"
+              title="Logout"
+            >
+              <LogOut size={20} />
+            </button>
             <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white">
               <User size={20} />
             </div>

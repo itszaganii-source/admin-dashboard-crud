@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import axios from 'axios'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
@@ -6,13 +7,15 @@ import Overview from './pages/Overview'
 import Produk from './pages/Produk'
 import FormProduk from './pages/FormProduk'
 import Pesanan from './pages/Pesanan'
+import Login from './pages/Login'
+import ProtectedRoute from './components/ProtectedRoute'
 import Toast from './components/Toast'
 import { mockProducts, mockOrders } from './constants'
 
 const API_BASE_URL = 'http://localhost:8080'
 
-function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+function Dashboard() {
+ const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState('overview')
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
@@ -197,6 +200,22 @@ function App() {
       {/* Toast Notification */}
       {toast && <Toast message={toast.message} type={toast.type} />}
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/*"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   )
 }
 
